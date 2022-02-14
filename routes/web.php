@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Content;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view ('Beranda', [
-          "title"=> "Beranda"
+          "title"=> "Beranda",
+          "contents"=>Content::where('status', '1')->orderBy('order_content')->get()
      ]);
 });
 
@@ -41,3 +44,8 @@ Route::get('/admin', function () {
           "title"=> "admin"
      ]);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('content',App\Http\Controllers\ContentController::class);

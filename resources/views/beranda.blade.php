@@ -4,12 +4,15 @@
   <center><h2 class="beranda">SELAMAT DATANG DI LAYANAN KEMENKES</h2> </center> 
   
   <div class="style-1">
-    <div class="btn"  >
-    <a href="#" > </a>
-     <img class="mb-3" align="center" src="img/Database.png" id="image1">
-     <br><span class="span1 mt-3">COLOCATION</span></div>
 
+  @foreach ($contents as $content)
     <div class="btn" >
+      <a href="#" > </a>
+        <img class="mb-3" align="center" src="{{$content->icon_content}}" id="image1">
+        <br><span class="span1 mt-3">{{ $content->name_content }}</span>
+    </div>
+  @endforeach
+    <!-- <div class="btn" >
     <a href="#" > </a>
       <img class="mb-3" align="center" src="img/office.png" id="image1"><br><span class="span1 mt-3">AKSES E-OFFICE</span>
     </div>
@@ -52,12 +55,12 @@
     <div class="btn" >
     <a href="#"> </a>
       <img class="mb-3" align="center" src="img/monitor.png" id="image1"><br><span class="span1 mt-3">DATA DAN INFORMASI</span>
-    </div>
+    </div> -->
 
-    <div class="btn" >
+    <!-- <div class="btn" >
     <a href="#"> </a>
       <img class="mb-3" align="center" src="img/registration.png" id="image1"><br><span class="span1 mt-3">REGISTRASI PUSKESMAS</span>
-    </div>
+    </div> -->
   </div>
 
   <div class="style-2">
