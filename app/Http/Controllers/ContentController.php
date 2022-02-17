@@ -61,9 +61,10 @@ class ContentController extends Controller
      * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function show(Content $content)
-    {        
-        return view('content.show',compact('content'));
+    public function show($id)
+    {     
+        $product = Content::find($id);   
+        return view('content.show', compact('product'));
     }
 
     /**
@@ -72,10 +73,12 @@ class ContentController extends Controller
      * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function edit(Content $content)
+    public function edit($id)
     {
+
+        $product = Content::find($id);
         return view('content.edit',compact('product'));
-    }
+    }  
 
     /**
      * Update the specified resource in storage.
@@ -84,18 +87,20 @@ class ContentController extends Controller
      * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Content $content)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name_content' => 'required',
             'order_content' => 'required',
-            'icon_content' => 'required',
+            'icon_content' => 'required|icon_content|mimes:jpeg,png,jpg|max:2048',
             'description_content' => 'required',
             'url_content' => 'required',
         ]);
-  
-        $content->update($request->all());
+        $file_name = time().'.'.$request->icon_content->extension();  
    
+        $request->icon_content->move(public_path('images'), $file_name);
+
+        Content::find($id)->update($request->all());
         return redirect()->route('content.index')
                         ->with('success','content created successfully.');
     }

@@ -26,7 +26,7 @@ Route::get('/masuk', function () {
      return view ('masuk',[
           "title"=> "masuk"
      ]);
-});
+});  
 
 Route::get('/daftar', function () {
      return view ('daftar', [

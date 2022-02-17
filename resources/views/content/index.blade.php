@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 <div class="row">
-        <div class="col-lg-12 margin-tb">
+        <div class="col-lg-12 margin-tb"> 
             <div class="pull-left">
                 <h2>Laravel 7 CRUD Example from scratch - ItSolutionStuff.com</h2>
             </div>
@@ -36,11 +36,11 @@
    
                     <a class="btn btn-info" href="{{ route('content.show',$product->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('content.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('content.edit', $product->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
-      
+
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
