@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
-@section('content')
+@section('container')
 <div class="container">
 <div class="row">
         <div class="col-lg-12 margin-tb"> 
             <div class="pull-left">
-                <h2>Laravel 7 CRUD Example from scratch - ItSolutionStuff.com</h2>
+                <h2>Data Content</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('content.create') }}"> Create New Product</a>
@@ -47,7 +47,6 @@
         </tr>
         @endforeach
     </table>
-  
-    {!! $content->links() !!}
+    {{$content->links()}}
 </div>
 @endsection

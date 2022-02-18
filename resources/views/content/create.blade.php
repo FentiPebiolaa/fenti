@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
-@section('content')
+@section('container')
 <div class="container">    
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -43,8 +43,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>icon:</strong>
-                    <input type="file" name="icon_content" class="form-control" placeholder="Icon Content">
-                </div>
+                    <input type="file" name="icon_content" class="form-control @error('icon_content') is-invalid @enderror" placeholder="Icon Content">
+                @error('icon_content')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                 @enderror   
+                </div> 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">

@@ -18,9 +18,9 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $content = Content::latest()->paginate(5);
+        $content = Content::latest()->paginate(50);
         return view('content.index',compact('content'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 50);
     }
 
     /**
@@ -41,15 +41,29 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+         $request->validate([
             'name_content' => 'required',
             'order_content' => 'required',
-            'icon_content' => 'required',
+            'icon_content' => 'image|file|max:1024',
             'description_content' => 'required',
             'url_content' => 'required',
         ]);
+         if($request->file('icon_content')){
+           $image = $request->file('icon_content')->store('post-images');
+         } 
+
   
-        Content::create($request->all());
+        Content::create([
+            'name_content' => $request->name_content,
+            'order_content' => $request->order_content,
+            'icon_content' => $image,
+            'description_content' => $request->description_content,
+            'url_content' => $request->url_content,
+            'status' => $request->status,
+            'type' => $request->type,
+
+
+        ]);
    
         return redirect()->route('content.index')
                         ->with('success','content created successfully.');
@@ -92,14 +106,10 @@ class ContentController extends Controller
         $request->validate([
             'name_content' => 'required',
             'order_content' => 'required',
-            'icon_content' => 'required|icon_content|mimes:jpeg,png,jpg|max:2048',
+            'icon_content' => 'required',
             'description_content' => 'required',
             'url_content' => 'required',
         ]);
-        $file_name = time().'.'.$request->icon_content->extension();  
-   
-        $request->icon_content->move(public_path('images'), $file_name);
-
         Content::find($id)->update($request->all());
         return redirect()->route('content.index')
                         ->with('success','content created successfully.');
