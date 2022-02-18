@@ -8,7 +8,7 @@
   @foreach ($contents as $content)
     <div class="btn" >
       <a href="#" > </a>
-        <img class="mb-3" align="center" src="{{$content->icon_content}}" id="image1">
+        <img class="mb-3" align="center" src="/storage/{{$content->icon_content}}" id="image1">
         <br><span class="span1 mt-3">{{ $content->name_content }}</span>
     </div>
   @endforeach
