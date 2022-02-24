@@ -48,9 +48,12 @@ class ContentController extends Controller
             'description_content' => 'required',
             'url_content' => 'required',
         ]);
-         if($request->file('icon_content')){
-           $image = $request->file('icon_content')->store('post-images');
-         } 
+        if($request->file('icon_content')){
+            $file = $request->file('icon_content');
+            $location = 'files';
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move($location,$filename);
+          } 
 
   
         Content::create([
@@ -111,14 +114,15 @@ class ContentController extends Controller
             'url_content' => 'required',
         ]);
         if($request->file('icon_content')){
-            $image = $request->file('icon_content')->store('post-images');
+            $file = $request->file('icon_content');
+            $location = 'files';
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move($location,$filename);
           } 
-
-
         Content::find($id)->update([
             'name_content' => $request->name_content,
             'order_content' => $request->order_content,
-            'icon_content' => $image,
+            'icon_content' => $filename,
             'description_content' => $request->description_content,
             'url_content' => $request->url_content,
             'status' => $request->status,
