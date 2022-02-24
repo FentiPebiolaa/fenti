@@ -23,7 +23,7 @@
             </ul>
         </div>
     @endif
-    <form method="POST" action="{{ route('content.update', $product->id) }}" >
+    <form method="POST" action="{{ route('content.update', $product->id) }}" enctype="multipart/form-data" >
     @csrf
     @method('PUT')
         <div class="row">
@@ -42,8 +42,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>icon:</strong>
-                    <input type="text" name="icon_content" class="form-control" placeholder="Icon Content" value="{{ $product->icon_content }}">
-                </div>
+                    <input type="file" name="icon_content" class="form-control @error('icon_content') is-invalid @enderror" placeholder="Icon Content" value="{{ $product->icon_content }}">
+                @error('icon_content')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                 @enderror   
+                </div> 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
