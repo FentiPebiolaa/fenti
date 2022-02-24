@@ -106,15 +106,29 @@ class ContentController extends Controller
         $request->validate([
             'name_content' => 'required',
             'order_content' => 'required',
-            'icon_content' => 'required',
+            'icon_content' => 'image|file|max:1024',
             'description_content' => 'required',
             'url_content' => 'required',
         ]);
-        Content::find($id)->update($request->all());
+        if($request->file('icon_content')){
+            $image = $request->file('icon_content')->store('post-images');
+          } 
+
+
+        Content::find($id)->update([
+            'name_content' => $request->name_content,
+            'order_content' => $request->order_content,
+            'icon_content' => $image,
+            'description_content' => $request->description_content,
+            'url_content' => $request->url_content,
+            'status' => $request->status,
+            'type' => $request->type,
+
+        ]);
         return redirect()->route('content.index')
                         ->with('success','content created successfully.');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *

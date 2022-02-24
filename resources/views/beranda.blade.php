@@ -3,7 +3,7 @@
 @section('container')
   <center><h2 class="beranda">SELAMAT DATANG DI LAYANAN KEMENKES</h2> </center> 
   
-  <div class="style-1">
+<div class="style-1">
 
   @foreach ($contents as $content)
     <div class="btn" >
@@ -12,11 +12,10 @@
         <br><span class="span1 mt-3">{{ $content->name_content }}</span>
     </div>
   @endforeach
-
+</div>
   <div class="style-2">
    <a href="#" class="btn1"><span class="span2 mt-3">Hubungi Kami</span></a>
   </div>
-  <div class="spacer"></div>
-                              
+  <div class="spacer"></div>                          
 @endsection  
    
