@@ -45,8 +45,6 @@ class ContentController extends Controller
             'name_content' => 'required',
             'order_content' => 'required',
             'icon_content' => 'image|file|max:1024',
-            'description_content' => 'required',
-            'url_content' => 'required',
         ]);
         if($request->file('icon_content')){
             $file = $request->file('icon_content');
@@ -59,12 +57,14 @@ class ContentController extends Controller
         Content::create([
             'name_content' => $request->name_content,
             'order_content' => $request->order_content,
-            'icon_content' => $image,
+            'icon_content' => $filename,
             'description_content' => $request->description_content,
             'url_content' => $request->url_content,
             'status' => $request->status,
-            'type' => $request->type,
-
+            'nama_link' => $request->nama_link,
+            'nama_link2' => $request->nama_link2,
+            'url_content2' => $request->url_content2,
+            'kategori' => $request->kategori,
 
         ]);
    
@@ -110,8 +110,6 @@ class ContentController extends Controller
             'name_content' => 'required',
             'order_content' => 'required',
             'icon_content' => 'image|file|max:1024',
-            'description_content' => 'required',
-            'url_content' => 'required',
         ]);
         if($request->file('icon_content')){
             $file = $request->file('icon_content');
@@ -126,7 +124,10 @@ class ContentController extends Controller
             'description_content' => $request->description_content,
             'url_content' => $request->url_content,
             'status' => $request->status,
-            'type' => $request->type,
+            'nama_link' => $request->nama_link,
+            'nama_link2' => $request->nama_link2,
+            'url_content2' => $request->url_content2,
+            'kategori' => $request->kategori,
 
         ]);
         return redirect()->route('content.index')

@@ -34,6 +34,15 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
+                <div  class="form-group">
+                    <strong>kategori:</strong>
+                    <select class="form-control" name="kategori" value="{{ $product->name_content }}">
+                    <option value="0">internal</option>
+                    <option value="1">External</option>
+                    </select> 
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>url:</strong>
                     <input type="text" name="url_content" class="form-control" placeholder="Url link" value="{{ $product->url_content }}">
@@ -41,8 +50,26 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>nama link:</strong>
+                    <input type="text" name="nama_link" class="form-control" placeholder="Url link" value="{{ $product->nama_link }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>url link ke 2:</strong>
+                    <input type="text" name="url_content2" class="form-control" placeholder="Url link ke 2" value="{{ $product->url_content }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Nama button ke 2:</strong>
+                    <input type="text" name="nama_link2" class="form-control" placeholder="nama_link ke 2" value="{{ $product->nama_link2 }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>icon:</strong>
-                    <input type="file" name="icon_content" class="form-control @error('icon_content') is-invalid @enderror" placeholder="Icon Content" value="{{ $product->icon_content }}">
+                    <input type="file" name="icon_content" class="form-control @error('icon_content') is-invalid @enderror" placeholder="Icon Content">
                 @error('icon_content')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -52,26 +79,20 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Order:</strong>
-                    <input type="text" name="order_content" class="form-control" placeholder="Name" value="{{ $product->order_content }}">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Type:</strong>
-                    <input type="text" name="type" class="form-control" placeholder="Name" value="{{ $product->type }}">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
                     <strong>Status:</strong>
                     <input type="text" name="status" class="form-control" placeholder="Name" value="{{ $product->status }}">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>Order Content::</strong>
+                    <input type="text" name="order_content" class="form-control" placeholder="Name" value="{{ $product->order_content }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Description:</strong>
-                    <textarea class="form-control" style="height:150px" name="description_content" placeholder="Detail">{{ $product->description_content }}</textarea > 
+                    <textarea class="form-control" style="height:150px" name="description_content" placeholder="Detail" id=konten >{{ $product->description_content }}</textarea > 
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -81,4 +102,14 @@
     
     </form>
 </div>
+@endsection
+@section('js_here')
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script>
+   var konten = document.getElementById("konten");
+     CKEDITOR.replace(konten,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+</script>
 @endsection

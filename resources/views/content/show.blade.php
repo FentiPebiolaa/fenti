@@ -14,7 +14,7 @@
                     <li class="list-group-item"><b>url: </b>{{$product->url_content}}</li>
                     <li class="list-group-item"><b>icon: </b>{{$product->icon_content}}</li>
                     <li class="list-group-item"><b>Order Content: </b>{{$product->order_content}}</li>
-                    <li class="list-group-item"><b>Type: </b>{{$product->type}}</li>
+                    <li class="list-group-item"><b>Kategori: </b>{{$product->kategori}}</li>
                     <li class="list-group-item"><b>status: </b>{{$product->status}}</li>
                     <li class="list-group-item"><b>Deskripsi: </b>{{$product->description_content }}</li>
                 </ul>

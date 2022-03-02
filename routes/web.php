@@ -18,7 +18,7 @@ use App\Models\Content;
 Route::get('/', function () {
     return view ('Beranda', [
           "title"=> "Beranda",
-          "contents"=>Content::where('status', '1')->orderBy('order_content')->get()
+          "contents"=>Content::where('status', '1')->orderBy('order_content', 'asc')->get()
      ]);
 });
 

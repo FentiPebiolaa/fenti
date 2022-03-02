@@ -36,10 +36,39 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>url:</strong>
+                    <strong>kategori:</strong>
+                    <select class="form-control" name="kategori">
+                    <option value="0">internal</option>
+                    <option value="1">External</option>
+                    </select> 
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>url link:</strong>
                     <input type="text" name="url_content" class="form-control" placeholder="Url link">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Nama button:</strong>
+                    <input type="text" name="nama_link" class="form-control" placeholder="nama_link">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>url link ke 2:</strong>
+                    <input type="text" name="url_content2" class="form-control" placeholder="Url link ke 2">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Nama button ke 2:</strong>
+                    <input type="text" name="nama_link2" class="form-control" placeholder="nama_link ke 2">
+                </div>
+            </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>icon:</strong>
@@ -53,26 +82,20 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Order:</strong>
-                    <input type="text" name="order_content" class="form-control" placeholder="Name">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Type:</strong>
-                    <input type="text" name="type" class="form-control" placeholder="Name">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
                     <strong>Status:</strong>
                     <input type="text" name="status" class="form-control" placeholder="Name">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>Order Content:</strong>
+                    <input type="text" name="order_content" class="form-control" placeholder="Name">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Description:</strong>
-                    <textarea class="form-control" style="height:150px" name="description_content" placeholder="Detail"></textarea>
+                    <textarea class="form-control" style="height:150px" name="description_content" placeholder="Detail" id=konten ></textarea>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -82,4 +105,14 @@
     
     </form>
 </div>
+@endsection
+@section('js_here')
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script>
+   var konten = document.getElementById("konten");
+     CKEDITOR.replace(konten,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+</script>
 @endsection

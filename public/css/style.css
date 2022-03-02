@@ -79,8 +79,9 @@ body{
 }
 .span1{
 	margin-left:5px;
-	margin-top: 32px;
+	margin-top:32px;
 	color: black;
+ 
 }
 .span2{
 	margin-left:5px;
@@ -88,3 +89,47 @@ body{
 	color: white;
 }
 
+.modal{
+  color:#121414;
+}
+
+.btn2{
+  color:#000000;
+  background-color:#C5E7E5 ;
+  text-decoration:none;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin: 7px;
+  padding: 1.5em;
+
+}
+
+.btn3{
+  padding: 1.5em;
+	margin-left:5px;
+	margin-top: 32px;
+	color:#000000;
+}
+
+.btn2{
+  margin-top: 32px;
+  color:#14A2AB;
+  background-color:#14A2AB ;
+  padding:1em;
+  text-decoration:none;
+  letter-spacing:2px;
+  margin: 7px;
+  border-radius: 0.5em;
+
+}
+
+.style-3 {
+	text-align: center;
+	color: #59D5DD;
+	margin-top: 4px;
+}
+
+.modal{
+  text-align:justify;
+  margin: 0 auto;
+}
